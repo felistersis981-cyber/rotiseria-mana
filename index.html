@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rotiseria Mana</title>
+    <style>
+        body{
+            background-color: #fff8f0;
+            font-family: arial, sans-serif;
+            text-align: center;
+            margin: 0px;
+            padding-top: 70px;
+        }
+        
+        h1{
+            color: brown;
+            font-size: 50px;
+            margin: 20px 0px;
+        }
+        
+        h2{
+            color: darkred;
+            font-size: 28px;
+        }
+
+        p{
+            font-size: 18px;
+            margin: 10px 20px;
+        }
+
+        .producto img{
+            width: 250px;
+            border: 3px solid brown;
+            border-radius: 10px;
+            display: block;
+            margin: auto;
+        }
+
+        ul{
+            list-style-type: none;
+            padding: 0;
+        }
+
+        button{
+            background-color: brown;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover{
+            background-color: darkred;
+            transform: scale(1.05);
+        }
+
+        .menu{
+            background-color: brown;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);       
+        }
+
+        .menu a{
+            color: white;
+            margin: 0px 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .menu a:hover{
+            color: yellow;
+        }
+
+        .producto{
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            width: 260px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .productos{
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .producto:hover{
+            transform: scale(1.08);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+        }
+
+        @media (max-width: 768px){
+            .productos{
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .producto{
+                width: 90%;
+            }
+
+        }
+             
+        .carrito{
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 10px;
+            width: 220px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3)
+        }
+
+        .carrito-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .carrito-lista{
+            display: none;
+            margin-top: 10px;
+        }
+
+        .carrito-lista ul{
+            list-style: none;
+            padding: 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .carrito-lista li{
+            border-bottom: 1px solid #ddd;
+            padding: 5px 0;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .eliminar{
+            color: red;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .total{
+            margin-top: 10px;
+            font-weight: bold;
+            color: brown;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="menu">
+        <a href="#">inicio</a>
+        <a href="#">productos</a>
+        <a href="#">contacto</a>
+        <a href="https://www.instagram.com" target="_blank">instagram</a>
+
+    </nav>
+
+    <h1>Rotiseria Maná</h1>
+    <h2>Pasa un buen momento en Rotiseria Mana y disfruta de la mejor comida</h2>
+    <p>Nuestro lema: comodidad, sabor y buena atención. ¡Disfruta tu estadía con nosotros!</p>
+
+    <div class="productos">
+        <div class="producto">
+            <img src="postres.jpg" alt="postres">
+            <ul>
+                <li>Postres en vaso</li>
+                <li>Ingredientes: frutas fresca, crema ,azúcar</li>     
+            </ul>
+            <p><strong>Precio:</strong> $150</p>
+            <button onclick="comprar('Postre en vaso',150)"> comprar </button>
+    </div>
+
+    <div class="producto">
+        <img src="descarga.jpg" alt="ensalda">
+            <ul>
+                <li>Ensalada de frutas</li>
+                <li>Ingredientes: frutas variadas, miel</li>
+            </ul>
+            <p><strong>Precio:</strong> $100</p>
+            <button onclick="comprar('Ensalada de frutas',100)">Comprar</button>
+    </div>
+
+    <div class="producto">
+        <img src="viandas.jpg" alt="viandas">
+        <ul>
+            <li>Viandas de comida</li>
+            <li>Ingredientes: arroz, carne, vegetales</li>
+        </ul>
+        <p><strong>Precio:</strong> $180</p>
+        <button onclick="comprar('viandas de comida',180)">Comprar</button>
+    </div>
+
+    <div class="producto">
+        <img src="bebidas.jpg" alt="bebidas">
+        <ul>
+            <li>Bebidas saludables</li>
+            <li>Ingredientes: frutas exprimidas, frutas variadas</li>
+        </ul>
+        <p><strong>Precio:</strong> $100</p>
+        <button onclick="comprar('bebidas',100)">Comprar</button>
+    </div>
+
+    </div>
+
+    <div class="carrito" onclick="togglecarrito()">
+        <div class="carrito-header">
+            🛒<span id="carrito-count">0</span> carrito
+        </div>
+        <div class="carrito-lista" id="lista-carrito">
+            <ul id="lista-items"></ul>
+            <div class="total" id="total">Total: $0</div>
+            <button onclick="enviarWhatsApp(event)">Enviar pedido por WhatsApps</button>
+        </div>
+    </div>
+
+    <script>
+
+        let carrito = [];
+
+        function comprar(producto, precio){
+            carrito.push({nombre: producto, precio: precio});
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito(){
+
+            const lista=document.getElementById("lista-items");
+            lista.innerHTML = "";
+            let total = 0;
+
+            carrito.forEach((item,index)=>{
+                const li = document.createElement("li");
+
+                const eliminar = document.createElement("span");
+                eliminar.textContent = "❌";
+                eliminar.className = "eliminar";
+                eliminar.onclick = (e) => {
+                    e.stopPropagation();
+                    carrito.splice(index,1);
+                    actualizarCarrito();
+                };
+                li.appendChild(document.createTextNode(` ${item.nombre} - $${item.precio}`));
+                li.appendChild(eliminar);
+                lista.appendChild(li);
+                total += item.precio;
+            });
+
+            document.getElementById("carrito-count").textContent =carrito.length;
+            document.getElementById("total").textContent = `total: $${total}`;
+            }
+
+            function togglecarrito(){
+                const lista = document.getElementById("lista-carrito")
+                lista.style.display = (lista.style.display === "block") ? "none" : "block";
+            }
+
+            function enviarWhatsApp(event){
+                event.stopPropagation();
+                if(carrito.length===0) return alert("el carrito está vacio");
+
+                let mensaje = "Hola, quiero comprar:\n";
+                carrito.forEach(item=>{
+                    mensaje += `- ${item.nombre} - $${item.precio}\n`;
+                });
+
+                const url = "https://wa.me/598091668549?text=" + encodeURIComponent(mensaje);
+                window.open(url);
+                    
+            }
+     
+    </script>
+</body>
+</html>
