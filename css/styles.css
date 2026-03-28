@@ -1,0 +1,38 @@
+body {
+    background-color: var(--bg-cream);
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5%;
+    align-items: center;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    padding: 50px 10%;
+    min-height: 80vh;
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+}
+
+.hero-content span {
+    color: var(--primary-brown);
+    font-style: italic;
+}
+
+/* El Grid de productos que viste en la imagen 2 */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 40px 5%;
+}

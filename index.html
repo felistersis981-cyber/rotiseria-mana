@@ -3,103 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rotiseria Maná</title>
-    <link rel="icon" type="image/png" href="logotipo.jpeg">
-    <link rel="stylesheet" href="stile.css">
-</head>
+    <title>Rotisería Maná - El Regalo del Cielo</title>
+    
+    <link rel="stylesheet" href="estilos/variables.css">
+    <link rel="stylesheet" href="estilos/styles.css">
+    <link rel="stylesheet" href="estilos/movil.css"> </head>
 <body>
-    <!-- Usamos <header> para el encabezado principal -->
-    <header>
-        <nav class="menu">
-            <div class="logo">
-                <img src="logotipo.jpeg" alt="Logotipo Rotiseria Maná">
-                <span>Rotiseria Maná</span>
-            </div>
-            <!-- Quitamos el onclick, lo manejaremos en JS -->
-            <div class="hamburguesa" id="btn-menu">☰</div>
-            
-            <div class="links" id="menu-links">
-                <a href="#">Inicio</a>
-                <a href="#">Productos</a>
-                <a href="#">Contacto</a>
-                <a href="#">Instagram</a>
-            </div>
+
+    <header class="navbar">
+        <div class="logo">Rotisería Maná</div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="#">Nosotros</a></li>
+            </ul>
         </nav>
+        <div class="cart-icon">
+            <a href="carrito.html">🛒 <span id="cart-count">0</span></a>
+        </div>
     </header>
 
-    <!-- Usamos <main> para el contenido principal de la página -->
     <main>
-        <h1>Rotiseria Maná</h1>
-        <h2>Pasa un buen momento en Rotiseria Maná y disfruta de la mejor comida</h2>
-        
-        <!-- Movimos los estilos al CSS y quitamos el onkeyup -->
-        <input type="text" id="buscador" class="buscador" placeholder="Buscar productos...">
-        
-        <p>Nuestro lema: comodidad, sabor y buena atención. ¡Disfruta tu estadía con nosotros!</p>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="badge">ARTESANAL & DIVINO</span>
+                <h1>El Regalo del <span>Cielo</span> a Tu Mesa</h1>
+                <p>Inspirados en la abundancia del Maná, horneamos cada pieza con devoción.</p>
+                <div class="hero-btns">
+                    <a href="productos.html" class="btn btn-primary">Explorar Menú</a>
+                    <a href="#" class="btn btn-secondary">Nuestra Historia</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="recursos/basket.png" alt="Canasta de pan">
+            </div>
+        </section>
 
-        <!-- Usamos <section> para agrupar contenido relacionado -->
-        <section class="productos" id="contenedor-productos">
-            <!-- PRODUCTO 1 -->
-            <article class="producto">
-                <img src="postres.jpg" alt="Postres en vaso">
-                <ul>
-                    <li>Postres en vaso</li>
-                    <li>Ingredientes: frutas frescas, crema, azúcar</li>
-                </ul>
-                <p><strong>Precio:</strong> $150</p>
-                <!-- Usamos data-attributes para guardar la info del producto -->
-                <button class="btn-comprar" data-nombre="Postre en vaso" data-precio="150">Comprar</button>
-            </article>
-
-            <!-- PRODUCTO 2 -->
-            <article class="producto">
-                <img src="descarga.jpg" alt="Ensalada de verduras">
-                <ul>
-                    <li>Ensalada de verduras</li>
-                    <li>Ingredientes: verduras variadas, aceites saludables</li>
-                </ul>
-                <p><strong>Precio:</strong> $100</p>
-                <button class="btn-comprar" data-nombre="Ensalada de verduras" data-precio="100">Comprar</button>
-            </article>
-
-            <!-- PRODUCTO 3 -->
-            <article class="producto">
-                <img src="viandas.jpg" alt="Viandas de comida">
-                <ul>
-                    <li>Viandas de comida</li>
-                    <li>Ingredientes: arroz, carne, vegetales</li>
-                </ul>
-                <p><strong>Precio:</strong> $180</p>
-                <button class="btn-comprar" data-nombre="Viandas de comida" data-precio="180">Comprar</button>
-            </article>
-
-            <!-- PRODUCTO 4 -->
-            <article class="producto">
-                <img src="bebidas.jpg" alt="Bebidas saludables">
-                <ul>
-                    <li>Bebidas saludables</li>
-                    <li>Ingredientes: frutas exprimidas, frutas variadas</li>
-                </ul>
-                <p><strong>Precio:</strong> $100</p>
-                <button class="btn-comprar" data-nombre="Bebidas" data-precio="100">Comprar</button>
-            </article>
+        <section class="specialties">
+            <h2>Nuestras Especialidades</h2>
+            <div class="grid-container">
+                <article class="card">
+                    <img src="recursos/pizza-home.jpg" alt="Pizzas">
+                    <div class="card-info">
+                        <h3>Pizzas al Horno</h3>
+                        <p>Masa madre y fuego lento.</p>
+                    </div>
+                </article>
+            </div>
         </section>
     </main>
 
-    <!-- El carrito lo mantenemos como un componente flotante -->
-    <aside class="carrito" id="icono-carrito">
-        <div class="carrito-header" id="btn-toggle-carrito">
-            🛒 <span id="carrito-count">0</span> carrito
-        </div>
-        <div class="carrito-lista" id="lista-carrito">
-            <ul id="lista-items"></ul>
-            <div class="total" id="total">Total: $0</div>
-            <button id="btn-ticket">Ver ticket</button>
-            <button id="btn-vaciar">Vaciar carrito</button>
-            <button id="btn-whatsapp">Enviar pedido por WhatsApp</button>
-        </div>
-    </aside>
-
-    <script src="js/script.js"></script>
+    <script src="scripts/general.js"></script> <script src="scripts/carrito.js"></script>   
 </body>
 </html>
